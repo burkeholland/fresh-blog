@@ -1,0 +1,12 @@
+.editor * {
+  all: initial;
+}
+
+.editor p {
+  display: block;
+}
+
+.rc-md-editor .editor-container > .section > .section-container {
+  padding-left: 0px;
+  padding-top: 10px;
+}

@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "./App.css";
 
-function App() {
+import Nav from "./components/Nav";
+import Home from "./pages/Home";
+import NewPost from "./pages/NewPost";
+import Post from "./pages/Post";
+
+const App = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  async function getUser() {
+    const response = await fetch("/.auth/me");
+    const user = await response.json();
+    setUser(user.clientPrincipal || null);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <div className="container main">
+          <Nav user={user} />
+          <div className="has-text-centered">
+            <Link to="/">
+              <img alt="site logo" src="/logo.png" />
+            </Link>
+          </div>
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/new">
+              <NewPost />
+            </Route>
+            <Route path="/post/:id" children={<Post user={user} />} />
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
