@@ -31,7 +31,7 @@ const Post = ({ user }) => {
         className="content"
         dangerouslySetInnerHTML={{ __html: post.body }}
       ></div>
-      {user ? (
+      {user.isAuthor ? (
         <button
           className="button is-primary is-pulled-right"
           onClick={handleDeletePost}
