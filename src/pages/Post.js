@@ -7,10 +7,10 @@ const Post = ({ user }) => {
   const history = useHistory();
 
   useEffect(() => {
-    getPost();
-  }, []);
+    getPost(id);
+  }, [id]);
 
-  async function getPost() {
+  async function getPost(id) {
     const response = await fetch(`/api/post/${id}`);
     const post = await response.json();
     setPost(post);
