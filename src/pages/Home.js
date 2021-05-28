@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import "./Home.css";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     getPosts();
@@ -14,12 +16,18 @@ const Home = () => {
     setPosts(posts);
   }
 
-  return posts.map(({ title, description, id }, index) => (
+  async function handlePostClick(id) {
+    history.push(`/post/${id}`);
+  }
+
+  return posts.map(({ title, body, id }, index) => (
     <div className="section">
-      <Link to={`/post/${id}`}>
+      <div className="post-summary" onClick={() => handlePostClick(id)}>
         <h1 className="title is-size-1">{title}</h1>
-        <p>{description}</p>
-      </Link>
+        <div
+          dangerouslySetInnerHTML={{ __html: body.substring(0, 400) + "..." }}
+        ></div>
+      </div>
     </div>
   ));
 };
