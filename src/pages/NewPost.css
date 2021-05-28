@@ -1,12 +1,11 @@
-.editor * {
-  all: initial;
+.editor .section {
+  all: unset;
+}
+
+.editor .button {
+  all: unset;
 }
 
 .editor p {
-  display: block;
-}
-
-.rc-md-editor .editor-container > .section > .section-container {
-  padding-left: 0px;
-  padding-top: 10px;
+  all: unset;
 }

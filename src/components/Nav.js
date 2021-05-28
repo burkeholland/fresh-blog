@@ -1,4 +1,5 @@
 import React from "react";
+import Role from "./Role";
 
 const Nav = ({ user }) => {
   return (
@@ -7,12 +8,12 @@ const Nav = ({ user }) => {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
-              {user.isAuthor && (
+              <Role user={user} role="author">
                 <a href="/new" className="button is-primary">
                   New Post
                 </a>
-              )}
-              {user.isLoggedIn ? (
+              </Role>
+              {user ? (
                 <a href="/.auth/logout" className="button is-light">
                   Logout
                 </a>

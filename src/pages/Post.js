@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import Role from "../components/Role";
 
 const Post = ({ user }) => {
   const [post, setPost] = useState([]);
@@ -31,16 +32,14 @@ const Post = ({ user }) => {
         className="content"
         dangerouslySetInnerHTML={{ __html: post.body }}
       ></div>
-      {user.isAuthor ? (
+      <Role user={user} role="author">
         <button
           className="button is-primary is-pulled-right"
           onClick={handleDeletePost}
         >
           Delete Post
         </button>
-      ) : (
-        <span></span>
-      )}
+      </Role>
       <div class="modal">
         <div class="modal-background"></div>
         <div class="modal-content">

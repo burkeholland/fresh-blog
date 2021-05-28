@@ -55,6 +55,7 @@ const NewPost = () => {
           </div>
         </div>
       </div>
+
       <div className="field">
         <label className="label">Post</label>
         <div className="editor">
