@@ -27,6 +27,10 @@ $modal-content-width: calc(100vw - 80px);
   background: transparent;
 }
 
+.modal-content {
+  max-width: 400px;
+}
+
 @media (prefers-color-scheme: dark) {
   #root,
   body {

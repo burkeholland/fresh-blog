@@ -4,6 +4,7 @@ import Role from "../components/Role";
 
 const Post = ({ user }) => {
   const [post, setPost] = useState([]);
+  const [showConfirm, setShowConfirm] = useState(false);
   const { id } = useParams();
   const history = useHistory();
 
@@ -17,7 +18,7 @@ const Post = ({ user }) => {
     setPost(post);
   }
 
-  async function handleDeletePost() {
+  async function handleConfirmDelete() {
     await fetch(`/api/post/${id}`, {
       method: "delete",
     });
@@ -27,7 +28,7 @@ const Post = ({ user }) => {
 
   return (
     <div className="section">
-      <h1 class="title is-size-1">{post.title}</h1>
+      <h1 className="title is-size-1">{post.title}</h1>
       <div
         className="content"
         dangerouslySetInnerHTML={{ __html: post.body }}
@@ -35,17 +36,41 @@ const Post = ({ user }) => {
       <Role user={user} role="author">
         <button
           className="button is-primary is-pulled-right"
-          onClick={handleDeletePost}
+          onClick={() => setShowConfirm(true)}
         >
           Delete Post
         </button>
       </Role>
-      <div class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-content">
-          Are you sure you want to delete this post?
+      <div className={`modal ${showConfirm ? "is-active" : ""}`}>
+        <div
+          className="modal-background"
+          onClick={() => setShowConfirm(false)}
+        ></div>
+        <div className="modal-content">
+          <div className="box p-3">
+            <p className="block is-size-5">
+              Are you sure you want to delete this post?
+            </p>
+            <div>
+              <div className="buttons is-right">
+                <button className="button" onClick={handleConfirmDelete}>
+                  Yes
+                </button>
+                <button
+                  className="button is-danger"
+                  onClick={() => setShowConfirm(false)}
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <button class="modal-close is-large" aria-label="close"></button>
+        <button
+          onClick={() => setShowConfirm(false)}
+          className="modal-close is-large"
+          aria-label="close"
+        ></button>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import "./Home.css";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -22,11 +21,9 @@ const Home = () => {
 
   return posts.map(({ title, body, id }, index) => (
     <div className="section">
-      <div className="post-summary" onClick={() => handlePostClick(id)}>
+      <div className="is-clickable" onClick={() => handlePostClick(id)}>
         <h1 className="title is-size-1">{title}</h1>
-        <div
-          dangerouslySetInnerHTML={{ __html: body.substring(0, 400) + "..." }}
-        ></div>
+        <p>{`${body.substring(0, 400).replaceAll(/[^>]*>/g, "")}...`}</p>
       </div>
     </div>
   ));
