@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Role from "./Role";
 
 const Nav = ({ user }) => {
@@ -9,9 +10,9 @@ const Nav = ({ user }) => {
           <div className="navbar-item">
             <div className="buttons">
               <Role user={user} role="author">
-                <a href="/new" className="button is-primary">
+                <Link to="/new" className="button is-primary">
                   New Post
-                </a>
+                </Link>
               </Role>
               {user ? (
                 <a href="/.auth/logout" className="button is-light">
