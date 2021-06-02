@@ -47,4 +47,12 @@ A sample application demonstrating the features of Azure Static Web Apps
 
 ## Deployment
 
-1.
+1. Use the Static Web Apps extension for VS Code to create a new site.
+
+   ![](media/create-swa.mp4)
+
+It make take a few minutes for your site to build and deploy.
+
+1. Add your database connection string to your SWA. The `local.settings.json` file is not deployed with your project.
+
+   ![](media/add-setting.mp4)

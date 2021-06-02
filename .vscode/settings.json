@@ -4,5 +4,8 @@
     "azureFunctions.projectLanguage": "TypeScript",
     "azureFunctions.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.preDeployTask": "npm prune"
+    "azureFunctions.preDeployTask": "npm prune",
+    "staticWebApps.appSubpath": "/",
+    "staticWebApps.apiSubpath": "api",
+    "staticWebApps.outputSubpath": "build"
 }
