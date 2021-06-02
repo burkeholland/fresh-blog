@@ -10,12 +10,41 @@ A sample application demonstrating the features of Azure Static Web Apps
 - Azure Databases extension
 - Azure Static Web Apps extension
 
-## Setup
+## Project Setup
 
-1. Click the "Deploy to Azure" button below to create a Cosmos DB database in Azure...
+1.  Fork this repo
 
-   [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.storage%2Fstorage-account-create%2Fazuredeploy.json)
+1.  Open in VS Code
 
-1. Find the database in the Azure Databases extension in VS Code. Right-click and select "Copy Connection String"
+1.  Run `npm setup`. This command adds some configuration files to the `api` folder.
+
+1.  Create a new Cosmos DB database called "blog" with a single collection called "posts".
+
+    ![](media/create-database.mp4)
+
+1.  Right-click the new database and select "Copy connection string".
+
+1.  Paste the connection string into the `/api/local.settings.json` file like so...
+
+    ```json
+    {
+      "IsEncrypted": false,
+      "Values": {
+        "AzureWebJobsStorage": "",
+        "FUNCTIONS_WORKER_RUNTIME": "node",
+        "DB_CONNECTION_STRING": "AccountEndpoint=https://your-database-name.documents.azure.com:443/;AccountKey=7gs3n33Psrl6VyZmf6U3kvT4sPwnR5dHNfrZqJvMsdfgbMrxGlga3wgmqt6w=="
+      }
+    }
+    ```
+
+## Running Locally
+
+1. Run the frontend with `npm start`. Note that the app is configured **not** to open a browser window as React apps normally do.
+
+1. Start the Static Web Apps Emulator with `npm run local`.
+
+1. Visit the application running on http://localhost:4280
+
+## Deployment
 
 1.
