@@ -18,7 +18,14 @@
     }
   },
   "variables": {
-    "accountName": "[toLower(parameters('accountName'))]"
+    "accountName": "[toLower(parameters('accountName'))]",
+    "locations": [
+      {
+        "locationName": "[parameters('location')]",
+        "failoverPriority": 0,
+        "isZoneRedundant": false
+      }
+    ]
   },
   "resources": [
     {
@@ -42,13 +49,13 @@
     {
       "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
       "apiVersion": "2021-01-15",
-      "name": "[concat(variables('accountName'), '/', blog)]",
+      "name": "[concat(variables('accountName'), '/blog')]",
       "dependsOn": [
         "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('accountName'))]"
       ],
       "properties": {
         "resource": {
-          "id": "[blog]"
+          "id": "blog"
         },
         "options": { "throughput": 400 }
       }
