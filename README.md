@@ -39,8 +39,6 @@ A sample application demonstrating the features of Azure Static Web Apps
 
 ## Running Locally
 
-1. Run the frontend with `npm start`. Note that the app is configured **not** to open a browser window as React apps normally do.
-
 1. Start the Static Web Apps Emulator with `npm run local`.
 
 1. Visit the application running on http://localhost:4280
