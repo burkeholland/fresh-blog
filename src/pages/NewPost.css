@@ -8,4 +8,8 @@
 
 .editor p {
   all: unset;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 8px 0;
+  display: block;
 }
