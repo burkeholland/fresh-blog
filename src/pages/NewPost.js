@@ -10,7 +10,6 @@ const mdParser = new MarkdownIt();
 
 const NewPost = () => {
   const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
   const [body, setBody] = useState();
   const history = useHistory();
 
@@ -18,7 +17,7 @@ const NewPost = () => {
     // save state to database and redirect
     await fetch("/api/post", {
       method: "post",
-      body: JSON.stringify({ title, description, body }),
+      body: JSON.stringify({ title, body }),
     });
 
     history.push("/");
@@ -26,33 +25,16 @@ const NewPost = () => {
 
   return (
     <div className="section">
-      <div className="columns">
-        <div className="column is-half">
-          <div className="field">
-            <label className="label">Title</label>
-            <div className="control">
-              <input
-                className="input"
-                name="title"
-                type="text"
-                placeholder="Post Title"
-                onChange={(e) => setTitle(e.target.value)}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="column is-half">
-          <div className="field">
-            <label className="label">Description</label>
-            <div className="control">
-              <textarea
-                name="description"
-                className="textarea"
-                placeholder="e.g. Hello world"
-                onChange={(e) => setDescription(e.target.value)}
-              ></textarea>
-            </div>
-          </div>
+      <div className="field">
+        <label className="label">Title</label>
+        <div className="control">
+          <input
+            className="input"
+            name="title"
+            type="text"
+            placeholder="Post Title"
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </div>
       </div>
 
