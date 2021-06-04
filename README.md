@@ -51,7 +51,7 @@ A sample application demonstrating the features of Azure Static Web Apps
 
 It make take a few minutes for your site to build and deploy.
 
-1. Add your database connection string to your SWA. The `local.settings.json` file is not deployed with your project.
+1. Add your database connection string to your Static Web App. The `local.settings.json` file is not deployed with your project.
 
    https://user-images.githubusercontent.com/686963/120531529-58fd9a00-c3a4-11eb-8fcf-2a4a96c1fc04.mp4
 
