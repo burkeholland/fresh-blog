@@ -25,11 +25,11 @@ const NewPost = () => {
   }
 
   async function handleFileUpload(image) {
-    let testData = new FormData();
-    testData.append("file_upload", image, image.name);
-    const response = await fetch("api/token", {
+    let formData = new FormData();
+    formData.append("file_upload", image, image.name);
+    const response = await fetch("api/upload", {
       method: "POST",
-      body: testData
+      body: formData
     });
     const json = await response.json();
     return json.imageUrl;

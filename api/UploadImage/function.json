@@ -7,7 +7,7 @@
       "dataType": "binary",
       "name": "req",
       "methods": ["post"],
-      "route": "token"
+      "route": "upload"
     },
     {
       "type": "http",
@@ -15,5 +15,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/GetSASToken/index.js"
+  "scriptFile": "../dist/UploadImage/index.js"
 }
