@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
+// import utils from "../shared/utils";
 
 import "./NewPost.css";
 import "react-markdown-editor-lite/lib/index.css";
@@ -17,10 +18,21 @@ const NewPost = () => {
     // save state to database and redirect
     await fetch("/api/post", {
       method: "post",
-      body: JSON.stringify({ title, body }),
+      body: JSON.stringify({ title, body })
     });
 
     history.push("/");
+  }
+
+  async function handleFileUpload(image) {
+    let testData = new FormData();
+    testData.append("file_upload", image, image.name);
+    const response = await fetch("api/token", {
+      method: "POST",
+      body: testData
+    });
+    const json = await response.json();
+    return json.imageUrl;
   }
 
   return (
@@ -45,6 +57,7 @@ const NewPost = () => {
             onChange={(e) => setBody(e.html)}
             style={{ height: "500px" }}
             renderHTML={(text) => mdParser.render(text)}
+            onImageUpload={(image) => handleFileUpload(image)}
           ></MdEditor>
         </div>
       </div>

@@ -1,0 +1,88 @@
+ // const blockBlobClient = containerClient.getBlockBlobClient(image.name);
+    // const uploadBlobResponse = await blockBlobClient.uploadBrowserData(image, {
+    //   blobHTTPHeaders: {
+    //     blobContentType: image.type
+    //   }
+    // });
+    console.log(
+      `Upload block blob ${container} successfully`,
+      uploadBlobResponse.requestId
+    );
+
+  var options = {
+    contentSettings:{contentType: parts[0].type}
+  };
+  
+  blobClient.createBlockBlobFromStream(STORAGE_CONTAINER, filename, streamifier.createReadStream(new Buffer(filedata)), filedata.length, options, (err, result) => {
+
+    if (!err) {
+      console.log("Image upload successful", result);
+
+    } else {
+
+      throw err;
+    }
+  });
+
+  context.res = {
+    body: "ok"
+  };
+
+  // const imageName = req.query.imageName;
+  // const token = await generateSASToken(imageName);
+  //   context.res = {
+  //     body: { token, account: STORAGE_ACCOUNT, container: STORAGE_CONTAINER },
+  //     headers: { "Content-Type": "application/json" },
+  //   };
+
+};
+
+
+
+// module.exports =  function (context, req) {
+//   var bodyBuffer = Buffer.from(req.body);
+//   var boundary = multipart.getBoundary(req.headers['content-type']);
+//   var parts = multipart.Parse(bodyBuffer, boundary);
+
+//   var filedata = parts[0].data;         // Image buffer data
+//   var filename = parts[0].filename;     // testImage.png
+//   const blobClient  =azure.createBlobService(STORAGE_ACCOUNT, STORAGE_KEY);
+ 
+//   var options = {
+//     contentSettings:{contentType: parts[0].type}
+//   };
+//   blobClient.createBlockBlobFromStream(STORAGE_CONTAINER, filename,streamifier.createReadStream(new Buffer(filedata)), filedata.length,options,(err,result)=>{
+
+//     if (!err) {
+//         console.log("Image upload successful", result);
+
+//     } else{
+
+//       throw err;
+//     }
+//   })
+//   context.res = {
+//     // status defaults to 200 */
+//     body: "ok"
+// };
+
+// async function generateSASToken(imageName) {
+//   const sharedKeyCredential = new StorageSharedKeyCredential(
+//     STORAGE_ACCOUNT,
+//     STORAGE_KEY
+//   );
+
+//   // construct the query to get a token that allows uploading
+//   const containerSAS = generateBlobSASQueryParameters(
+//     {
+//       containerName: STORAGE_CONTAINER,
+//       permissions: ContainerSASPermissions.parse("wr"),
+//       startsOn: new Date(),
+//       blobName: imageName,
+//       expiresOn: new Date(new Date().valueOf() + 86400),
+//     },
+//     sharedKeyCredential
+//   );
+
+//   return containerSAS.toString();
+// }
