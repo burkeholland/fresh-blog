@@ -25,8 +25,11 @@ const NewPost = () => {
   }
 
   async function handleFileUpload(image) {
+    // create a new form data object that will hold the image
     let formData = new FormData();
     formData.append("file_upload", image, image.name);
+
+    // send the form data object to the server (uploads file)
     const response = await fetch("api/upload", {
       method: "POST",
       body: formData
