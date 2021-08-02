@@ -17,7 +17,7 @@ const postService = {
     },
 
     async create(post: object) {
-        let { resource } = await collection.items.create(post);
+        let { resource } = await collection.items.upsert(post);
         return resource;
     },
 

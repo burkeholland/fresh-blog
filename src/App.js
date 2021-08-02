@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
-import NewPost from "./pages/NewPost";
+import Edit from "./pages/Edit";
 import Post from "./pages/Post";
+import Admin from "./pages/Admin";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -23,19 +24,17 @@ const App = () => {
   return (
     <Router>
       <div className="App">
+        <Nav user={user} />
         <div className="container main">
-          <Nav user={user} />
-          <div className="has-text-centered">
-            <Link to="/">
-              <img alt="site logo" src="/logo.png" />
-            </Link>
-          </div>
           <Switch>
             <Route path="/" exact>
               <Home />
             </Route>
-            <Route path="/new">
-              <NewPost />
+            <Route path="/edit/:id?">
+              <Edit />
+            </Route>
+            <Route path="/admin">
+              <Admin />
             </Route>
             <Route path="/post/:id" children={<Post user={user} />} />
           </Switch>
