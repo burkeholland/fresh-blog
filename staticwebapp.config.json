@@ -1,7 +1,11 @@
 {
   "routes": [
     {
-      "route": "/new",
+      "route": "/edit",
+      "allowedRoles": ["author"]
+    },
+    {
+      "route": "/admin",
       "allowedRoles": ["author"]
     },
     {
