@@ -6,44 +6,12 @@ $fullhd: 960px;
 
 $primary: #f25e5e;
 
-$navbar-background-color: #f9f5f1;
-
 $navbar-breakpoint: $tablet;
-
-$modal-content-width: calc(100vw - 80px);
 
 @import "bulma";
 
-.container {
-  max-width: 960px;
-  margin: auto;
-}
-
-.navbar-item {
-  height: 54px;
-}
-
-.navbar {
-  background: transparent;
-}
-
-.modal-content {
-  max-width: 400px;
-}
-
-@media (prefers-color-scheme: dark) {
-  #root,
-  body {
-    background-color: #333;
-  }
-
-  .translation {
-    color: white;
-  }
-
-  .box.box {
-    color: white;
-    background-color: #333;
-    border: 2px solid #e0672a;
-  }
+html,
+body,
+#root {
+  height: 100%;
 }

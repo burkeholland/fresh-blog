@@ -23,9 +23,9 @@ const App = () => {
 
   return (
     <Router>
-      <div className="App">
+      <div className="main">
         <Nav user={user} />
-        <div className="container main">
+        <div className="container">
           <Switch>
             <Route path="/" exact>
               <Home />
