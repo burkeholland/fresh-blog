@@ -2,6 +2,8 @@
 
 A sample application demonstrating the features of Azure Static Web Apps
 
+Simple change to the README
+
 ## Prerequisites
 
 - Node LTS
