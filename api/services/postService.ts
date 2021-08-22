@@ -6,7 +6,7 @@ const collection = database.container("posts");
 
 const postService = {
     async get() {
-        let iterator = collection.items.readAll();
+        let iterator = collection.items.query("SELECT * FROM c ORDER BY c._ts DESC");
         let { resources } = await iterator.fetchAll();
         return resources;
     },
@@ -17,7 +17,7 @@ const postService = {
     },
 
     async create(post: object) {
-        let { resource } = await collection.items.create(post);
+        let { resource } = await collection.items.upsert(post);
         return resource;
     },
 

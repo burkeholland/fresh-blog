@@ -1,14 +1,12 @@
 {
   "routes": [
     {
-      "route": "/new",
+      "route": "/edit",
       "allowedRoles": ["author"]
     },
     {
-      "route": "/images/*",
-      "headers": {
-        "cache-control": "must-revalidate, max-age=15770000"
-      }
+      "route": "/admin",
+      "allowedRoles": ["author"]
     },
     {
       "route": "/api/*",

@@ -1,4 +1,4 @@
-# Fresh Blog
+# Fresh Blog!!
 
 A sample application demonstrating the features of Azure Static Web Apps!
 
