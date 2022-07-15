@@ -24,7 +24,7 @@
 		"dbaeumer.vscode-eslint"
 	],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "npm install ; npm i -g @azure/static-web-apps-cli",
+	"postCreateCommand": "npm install ; npm i -g @azure/static-web-apps-cli",
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "node"
 }
